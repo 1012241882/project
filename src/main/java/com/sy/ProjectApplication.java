@@ -1,6 +1,5 @@
 package com.sy;
 
-import com.sy.interceptor.InterceptorRules;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Import;
@@ -12,8 +11,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @SpringBootApplication(scanBasePackages = "com.sy")
 @Order(Ordered.HIGHEST_PRECEDENCE)
 @EnableTransactionManagement
-@Import(value = {SpringShiroConfig.class,SpringEsConfig.class,InterceptorRules.class})
-@EnableElasticsearchRepositories(basePackages="com.sy.es")
+@Import(value = {SpringShiroConfig.class,SpringEsConfig.class})
+@EnableElasticsearchRepositories(basePackages="com.sy.common.es")
 public class ProjectApplication {
 
     public static void main(String[] args) {

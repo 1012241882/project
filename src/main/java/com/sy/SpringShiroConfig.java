@@ -1,7 +1,7 @@
 package com.sy;
 
 
-import com.sy.realm.MyJdbcRealm;
+import com.sy.common.realm.MyJdbcRealm;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.realm.Realm;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
@@ -58,17 +58,17 @@ public class SpringShiroConfig {
         System.out.println( "shiro Filter....." );
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(securityManager);
-        shiroFilterFactoryBean.setLoginUrl("http://127.0.0.1:8020/sy-agent/login.html");
+        shiroFilterFactoryBean.setLoginUrl("http://127.0.0.1:8080/login.html");
         //拦截器.
         Map<String,String> filterChainDefinitionMap = new LinkedHashMap<String,String>();
 
         // 配置不会被拦截的链接 顺序判断
         filterChainDefinitionMap.put("/login.do", "anon");
         filterChainDefinitionMap.put("/captcha.do", "anon");
-        filterChainDefinitionMap.put("/tologin.do", "anon");
+//        filterChainDefinitionMap.put("/tologin.do", "anon");
         filterChainDefinitionMap.put("/session.do", "anon");
         //filterChainDefinitionMap.put("/user/remember.do", "user");
-        filterChainDefinitionMap.put("/**", "authc");
+//        filterChainDefinitionMap.put("/**", "authc");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilterFactoryBean;
     }
